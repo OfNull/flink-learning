@@ -1,4 +1,4 @@
-package flinklearning.operator.entity;
+package flinklearning._2operator.entity;
 
 public class Item {
     /**

@@ -1,6 +1,6 @@
-package flinklearning.operator;
+package flinklearning._2operator;
 
-import flinklearning.operator.entity.Item;
+import flinklearning._2operator.entity.Item;
 import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.common.functions.JoinFunction;
 import org.apache.flink.api.common.typeutils.TypeSerializer;

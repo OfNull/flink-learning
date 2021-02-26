@@ -1,6 +1,6 @@
-package flinklearning.operator;
+package flinklearning._2operator;
 
-import flinklearning.operator.entity.Item;
+import flinklearning._2operator.entity.Item;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;

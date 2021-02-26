@@ -1,4 +1,4 @@
-package flinklearning.operator;
+package flinklearning._2operator;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
