@@ -15,6 +15,7 @@ public class E01SourceFunction {
     public static void main(String[] args) throws Exception {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
         DataStreamSource<String> source = env.addSource(new SourceFunction<String>() {
             private boolean isRunning = true;
 
