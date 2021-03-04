@@ -29,7 +29,7 @@ public class E03CustomizeRichSource extends RichSourceFunction<OrderInfo> {
     @Override
     public void open(Configuration parameters) throws Exception {
         super.open(parameters);
-        //冲配置中读取文件
+        //通过上下问获取全局配置对象且读取配置信息
         ParameterTool parameterTool = (ParameterTool) getRuntimeContext().getExecutionConfig().getGlobalJobParameters();
         String url = parameterTool.get("url");
         String username = parameterTool.get("username");
@@ -43,15 +43,13 @@ public class E03CustomizeRichSource extends RichSourceFunction<OrderInfo> {
     }
 
     /**
-     * 在线程中断前调用
+     *  run 之后调用
      *
      * @throws Exception
      */
     @Override
     public void close() throws Exception {
         super.close();
-        //关闭资源
-        isRunning = false;
         ps.close();
         connection.close();
     }
@@ -68,6 +66,6 @@ public class E03CustomizeRichSource extends RichSourceFunction<OrderInfo> {
 
     @Override
     public void cancel() {
-
+        isRunning = false;
     }
 }

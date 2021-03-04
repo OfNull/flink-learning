@@ -9,10 +9,8 @@ import java.util.Random;
  * 不带上下文 不支持并发
  */
 public class E02CustomizeSource implements SourceFunction<OrderInfo> {
-
     //运行标志位
     private volatile boolean isRunning = true;
-
 
     @Override
     public void run(SourceContext<OrderInfo> ctx) throws Exception {
