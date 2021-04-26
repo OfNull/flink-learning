@@ -5,6 +5,8 @@ import org.apache.flink.table.api.EnvironmentSettings;
 import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
+import java.time.Duration;
+
 public class _02MysqlCdcTable {
     public static void main(String[] args) {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -13,6 +15,7 @@ public class _02MysqlCdcTable {
         env.getCheckpointConfig().setTolerableCheckpointFailureNumber(100);
         EnvironmentSettings envSet = EnvironmentSettings.newInstance().useBlinkPlanner().inStreamingMode().build();
         StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env, envSet);
+        tableEnv.getConfig().setIdleStateRetention(Duration.ofDays(1));
         String sourceDDL = "" +
                 "CREATE TABLE monitor_heart_record_binlog (\n" +
                 "    id INT NOT NULL,\n" +

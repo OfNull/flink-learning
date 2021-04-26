@@ -30,15 +30,16 @@ public class _01MysqlCdcTest {
         SourceFunction<String> sourceFunction = MySQLSource.<String>builder()
                 .hostname("10.130.36.244")
                 .port(3306)
-                .databaseList("^monitor-uat$") // monitor all tables under inventory database
-//                .tableList("*")
+                .databaseList("monitor-uat") // monitor all tables under inventory database
+                .tableList("monitor-uat.monitor_heart_record")
                 .username("user")
                 .password("123456")
                 .serverId(4447)
                 .serverTimeZone("Asia/Shanghai")
                 .startupOptions(StartupOptions.initial())
                 .debeziumProperties(properties)
-                .deserializer(new StringDebeziumDeserializationSchema()) // converts SourceRecord to String
+//                .deserializer(new StringDebeziumDeserializationSchema()) // converts SourceRecord to String
+                .deserializer(new JsonDebeziumDeserializationSchema()) // converts SourceRecord to String
 //                .deserializer(new DebeziumJsonDeserializationSchema(new RowType(), null, Types.POJO(RowData.class), false, true, TimestampFormat.SQL)) // converts SourceRecord to String
                 .build();
 
