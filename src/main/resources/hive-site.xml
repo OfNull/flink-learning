@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<!-- jdbc 连接的 URL -->
+	<property>
+ 		<name>javax.jdo.option.ConnectionURL</name>
+ 		<value>jdbc:mysql://10.130.36.244:3306/hive?useSSL=false</value>
+	</property>
+
+
+	<!-- jdbc 连接的 Driver-->
+	<property>
+		<name>javax.jdo.option.ConnectionDriverName</name>
+		 <value>com.mysql.cj.jdbc.Driver</value>
+	</property>
+
+
+	<!-- jdbc 连接的 username-->
+ 	<property>
+ 		<name>javax.jdo.option.ConnectionUserName</name>
+		 <value>root</value>
+	</property>
+
+	<!-- jdbc 连接的 password -->
+	<property>
+		<name>javax.jdo.option.ConnectionPassword</name>
+		<value>tech789</value>
+	</property>
+
+  <!-- Hive 元数据存储版本的验证 -->
+  <property>
+    <name>hive.metastore.schema.verification</name>
+    <value>false</value>
+  </property>
+ 
+  <!--元数据存储授权-->
+  <property>
+    <name>hive.metastore.event.db.notification.api.auth</name>
+    <value>false</value>
+  </property>
+
+  <!-- Hive 默认在 HDFS 的工作目录 -->
+  <property>
+    <name>hive.metastore.warehouse.dir</name>
+    <value>/user/hive/warehouse</value>
+  </property>
+
+
+
+ <!-- 指定存储元数据要连接的地址 -->
+ <property>
+ 	<name>hive.metastore.uris</name>
+ 	<value>thrift://10.130.10.242:9083</value>
+	<description>指向的是运行metastore服务的主机,这是hive客户端配置，metastore服务不需要配置</description>
+ </property>
+
+ <!-- 指定 hiveserver2 连接的 host -->
+ <property>
+ 	<name>hive.server2.thrift.bind.host</name>
+	<value>10.130.10.242</value>
+ </property>
+ 
+<!-- 指定 hiveserver2 连接的端口号 -->
+ <property>
+ 	<name>hive.server2.thrift.port</name>
+ 	<value>10000</value>
+ </property>
+
+<!-- 打印表头 -->
+ <property>
+ 	<name>hive.cli.print.header</name>
+ 	<value>true</value>
+ </property>
+ <!-- 打印当前库 -->
+ <property>
+ 	<name>hive.cli.print.current.db</name>
+ 	<value>true</value>
+ </property>
+
+</configuration>
