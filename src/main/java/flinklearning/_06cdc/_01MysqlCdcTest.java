@@ -38,8 +38,8 @@ public class _01MysqlCdcTest {
                 .serverTimeZone("Asia/Shanghai")
                 .startupOptions(StartupOptions.initial())
                 .debeziumProperties(properties)
-//                .deserializer(new StringDebeziumDeserializationSchema()) // converts SourceRecord to String
-                .deserializer(new JsonDebeziumDeserializationSchema()) // converts SourceRecord to String
+                .deserializer(new StringDebeziumDeserializationSchema()) // converts SourceRecord to String
+//                .deserializer(new JsonDebeziumDeserializationSchema()) // converts SourceRecord to String
 //                .deserializer(new DebeziumJsonDeserializationSchema(new RowType(), null, Types.POJO(RowData.class), false, true, TimestampFormat.SQL)) // converts SourceRecord to String
                 .build();
 

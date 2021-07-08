@@ -21,10 +21,12 @@ public class JsonDebeziumDeserializationSchema implements DebeziumDeserializatio
 
     @Override
     public void deserialize(SourceRecord record, Collector<String> out) throws Exception {
+        //操作类型
         Envelope.Operation op = Envelope.operationFor(record);
 
         Struct value = (Struct) record.value();
         Schema valueSchema = record.valueSchema();
+        //获取数据库和表名
         String db = (String) value.getStruct(Envelope.FieldName.SOURCE).get(DB);
         String table = (String) value.getStruct(Envelope.FieldName.SOURCE).get(TABLE);
         long ts_ms = ((Long) value.get(Envelope.FieldName.TIMESTAMP)).longValue();
@@ -32,15 +34,19 @@ public class JsonDebeziumDeserializationSchema implements DebeziumDeserializatio
         binlogInfo.setDb(db);
         binlogInfo.setTable(table);
         binlogInfo.setTs_ms(ts_ms);
+
         if (op == Envelope.Operation.CREATE || op == Envelope.Operation.READ) {
+            //新增事件或者读取
             Map<String, Object> insert = extractAfterRow(value, valueSchema);
             binlogInfo.setOp(op.code());
             binlogInfo.setAfter(insert);
         } else if (op == Envelope.Operation.DELETE) {
+            //删除
             Map<String, Object> delete = extractBeforeRow(value, valueSchema);
             binlogInfo.setOp(op.code());
             binlogInfo.setBefore(delete);
         } else {
+            //修改
             Map<String, Object> before = extractBeforeRow(value, valueSchema);
             Map<String, Object> after = extractAfterRow(value, valueSchema);
             binlogInfo.setOp(op.code());

@@ -3,13 +3,16 @@ package flinklearning._06cdc;
 
 import java.util.Map;
 
+/**
+ * Binlog Json对象
+ */
 public class BinlogInfo {
     private String db;
     private String table;
-    private Map<String, Object> after;
-    private Map<String, Object> before;
-    private String op;
-    private long ts_ms;
+    private Map<String, Object> after;   //更新后值
+    private Map<String, Object> before;  //更新之前值
+    private String op;                   //操作类型
+    private long ts_ms;                  //事件时间戳
 
     public String getDb() {
         return db;
