@@ -243,6 +243,13 @@ under the License.
 <!--            <artifactId>rocketmq-client</artifactId>-->
 <!--            <version>4.3.0</version>-->
 <!--        </dependency>-->
+
+
+        <dependency>
+            <groupId>org.apache.kudu</groupId>
+            <artifactId>kudu-client</artifactId>
+            <version>1.14.0</version>
+        </dependency>
     </dependencies>
 
     <build>
